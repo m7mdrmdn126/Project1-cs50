@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block tittle %}
+    book
+{% endblock %}
+
+
+{% block body%}
+
+<ul>
+  <li>book name : {{ book.title }}</li>
+  <li>for author : {{ book.author }}</li>
+  <li>in year : {{ book.year }}</li>
+  <li>book isbn  : {{ book.isbn }}</li>
+  <li>book average rating  : {{ rating }}</li>
+  <li>book rating count  : {{ counts }}</li>
+</ul>
+
+<h1>reviws</h1>
+
+{% if reviews is none %}
+  <p> No reviews. </p>
+{% else %}
+  <ul>
+    {% for review in reviews %}
+      <li> review from user: {{ review.userr }}. <br> by rate: {{ review.rate }}. <br> {{ review.review }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+<form  action="{{ url_for('bookinfo', book_id = book.id) }}" method="post">
+  <div class="form-group">
+    <input type="text" name="review" placeholder="Enter review">
+    <input type="text" name="rate" placeholder="enter book rate from 1 to 5">
+
+    <button type="submit" >add review </button>
+
+  </div>
+
+
+</form>
+
+
+
+
+
+
+{% endblock %}

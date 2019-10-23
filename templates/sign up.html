@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  sign up
+{% endblock %}
+
+{% block body %}
+
+  <h3> sign up </h3>
+  <form  action="{{url_for('sign_up')}}" method="POST">
+    <div class="form-group">
+    <input type="text" name="username" placeholder="username" >
+    <input type="password" name="password" placeholder="password" >
+    <button type="submit" > submit </button>
+    </div>
+  </form>
+
+  {% endblock %}
